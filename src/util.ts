@@ -1,3 +1,3 @@
-export const identity = function(item) {
+export const identity = function(item:any) {
   return item;
 }
