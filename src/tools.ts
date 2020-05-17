@@ -10,9 +10,9 @@ export function getIn<T>(source: any, path: string[], defaultValue: T): T {
   }
   if (path.length < 1) return defaultValue
   const first: string = path[0]
-
+  const arr = path.slice(1)
   try {
-    return path.reduce((res: any, key: string) => {
+    return arr.reduce((res: any, key: string) => {
       res = res[key]
       return res
     }, source[first]) as T
