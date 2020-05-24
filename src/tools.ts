@@ -4,15 +4,18 @@
  * @param  path 访问对象的路径
  * @param  defaultValue 默认参数
  */
-export function getIn<T>(source: any, path: string[], defaultValue: T): T {
+type Path = string | number
+export function getIn<T>(source: any, path: Path[], defaultValue?: T): T | undefined {
   if (source === null || source === undefined) {
     return defaultValue
   }
+  if (!Array.isArray(path)) return defaultValue
   if (path.length < 1) return defaultValue
-  const first: string = path[0]
+  const first: Path = path[0]
+  if (source[first] === null || source[first] === undefined) return defaultValue
   const arr = path.slice(1)
   try {
-    return arr.reduce((res: any, key: string) => {
+    return arr.reduce((res: any, key: Path) => {
       res = res[key]
       return res
     }, source[first]) as T

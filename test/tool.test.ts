@@ -10,11 +10,24 @@ describe('Tool工具函数测试集合', () => {
       }
     }
     const people = target.people
-    it('获取对象制定path的值', () => {
+    it('获取对象指定path的值', () => {
       const name: string = getIn<string>(target, ['name'], '')
       const peo: object = getIn<object>(target, ['people'], {})
-      expect(name).toEqual('test')
+      const color: string = getIn<string>(target, ['people', 'class', 1], '')
+      expect(name).toBe('test')
       expect(peo).toEqual(people)
+      expect(JSON.stringify(peo)).toEqual(JSON.stringify(people))
+      expect(color).toEqual('黄')
+    })
+    it('源对象为null或者undefined，返回默认值', () => {
+      const tragetNull = getIn<string>(null, ['nothing'], 'tragetNull')
+      const targetUndefind = getIn<string>(undefined, ['nothing'], 'targetUndefind')
+      expect(tragetNull).toBe('tragetNull')
+      expect(targetUndefind).toBe('targetUndefind')
+    })
+    it('path数组为空返回默认值', () => {
+      const lengthO = getIn<number>(target, [], 2)
+      expect(lengthO).toBe(2)
     })
   })
 })

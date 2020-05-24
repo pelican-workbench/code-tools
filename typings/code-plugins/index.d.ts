@@ -10,3 +10,4 @@
     emit:(name:string,...arg:any[])=>void
   }
 }
+type typeing = 'string' | 'number' | 'null' | 'object' | 'array' | 'promise'| 'set' | 'date' | 'symbol' |'map' | 'weakmap' | 'regexp' | 'weakset' | 'undefined' | 'boolean' | 'function'
