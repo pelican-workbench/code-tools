@@ -43,7 +43,7 @@ export function addClass(el: HTMLElement, className: string) {
  * @param name string
  * @param val any
  */
-export function getData(el: HTMLElement, name: string, val: any) {
+export function getData(el: HTMLElement, name: string) {
   if (!isHTMLElement(el)) return
   const prefix = 'data-'
   return el.getAttribute(prefix + name)
