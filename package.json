@@ -1,7 +1,7 @@
 {
   "name": "code-tools",
   "version": "0.0.1",
-  "description": "各种更具库，插件",
+  "description": "各种工具库，插件",
   "keywords": [
     "tools",
     "plugins",
@@ -85,6 +85,11 @@
       "@commitlint/config-conventional"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
@@ -95,7 +100,7 @@
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
-    "husky": "^1.0.1",
+    "husky": "^4.3.0",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
     "lint-staged": "^8.0.0",
@@ -120,5 +125,8 @@
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.12.0",
     "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "pre-commit": "^1.2.2"
   }
 }

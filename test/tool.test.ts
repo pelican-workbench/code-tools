@@ -11,9 +11,9 @@ describe('Tool工具函数测试集合', () => {
     }
     const people = target.people
     it('获取对象指定path的值', () => {
-      const name: string = getIn<string>(target, ['name'], '')
-      const peo: object = getIn<object>(target, ['people'], {})
-      const color: string = getIn<string>(target, ['people', 'class', 1], '')
+      const name: string | undefined = getIn<string>(target, ['name'], '')
+      const peo: object | undefined = getIn<object>(target, ['people'], {})
+      const color: string | undefined = getIn<string>(target, ['people', 'class', 1], '')
       expect(name).toBe('test')
       expect(peo).toEqual(people)
       expect(JSON.stringify(peo)).toEqual(JSON.stringify(people))

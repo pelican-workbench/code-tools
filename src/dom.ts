@@ -21,6 +21,7 @@ export function hasClass(el: HTMLElement, className: string) {
   let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
   return reg.test(el.className)
 }
+
 /**
  * 给某个元素添加className
  * @author zm

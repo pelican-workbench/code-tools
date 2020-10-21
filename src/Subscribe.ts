@@ -1,5 +1,6 @@
 export default class Subscribe implements CodeTools.ISubscribe {
-  public handlers: CodeTools.Handler = {}
+  protected handlers: CodeTools.Handler = {}
+
   public on(name: string, listener: Function): void {
     if (typeof listener !== 'function') {
       throw new TypeError('"listener" must be a function')
@@ -10,6 +11,7 @@ export default class Subscribe implements CodeTools.ISubscribe {
     }
     this.handlers[name].push(listener)
   }
+
   public emit(name: string, ...arg: any[]) {
     const group: Function[] = this.handlers[name]
     if (!group || group.length < 1) return
@@ -17,6 +19,7 @@ export default class Subscribe implements CodeTools.ISubscribe {
       listener.apply(null, arg)
     })
   }
+
   public off(name: string, listener: Function | undefined) {
     let subscribe: Function[] | undefined = this.handlers[name]
     if (!listener) {

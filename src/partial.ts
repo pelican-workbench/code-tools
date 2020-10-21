@@ -8,7 +8,7 @@ export function curry(func: Function) {
     if (args.length >= func.length) {
       return func.apply(null, args)
     } else {
-      //提供参数小于函数参数，返回偏函数
+      // 提供参数小于函数参数，返回偏函数
       return function pass(...args2: any[]) {
         return curried.apply(null, args.concat(args2))
       }

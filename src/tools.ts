@@ -5,6 +5,7 @@
  * @param  defaultValue 默认参数
  */
 type Path = string | number
+
 export function getIn<T>(source: any, path: Path[], defaultValue?: T): T | undefined {
   if (source === null || source === undefined) {
     return defaultValue
@@ -42,4 +43,25 @@ export function isEmpty(target: object | Array<any>): boolean {
     return Object.keys(target).length < 1
   }
   return false
+}
+
+/**
+ * 替换字符串中的模板成指定的值
+ * @param str 模板字符串 1[2]3[4]
+ * @param map 匹配到的模板映射的值 {2:c,4:d}
+ * @param reg 正则 /\[(\w+)\]/g
+ * @return {string|*} 1c3d
+ */
+export function replaceSpecialStr(
+  str: string,
+  map: Record<string, any> = {},
+  reg: RegExp = /\[(\w+)\]/g
+) {
+  if (!str || typeof str !== 'string') return str
+  return str.replace(reg, function(template, key) {
+    if (map && map[key]) {
+      return map[key]
+    }
+    return template
+  })
 }
